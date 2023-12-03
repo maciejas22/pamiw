@@ -8,6 +8,7 @@ import authorRoutes from './modules/author/author.route'
 import bookRoutes from './modules/book/book.route'
 import { bookSchemas } from './modules/book/book.schema'
 import { authSchemas } from './modules/auth/auth.schema'
+import authRoutes from './modules/auth/auth.route'
 
 const buildServer = (NODE_ENV: Env) => {
   const server = Fastify({
@@ -46,6 +47,7 @@ const buildServer = (NODE_ENV: Env) => {
     transformSpecificationClone: true,
   })
 
+  server.register(authRoutes, { prefix: '/auth' })
   server.register(authorRoutes, { prefix: '/authors' })
   server.register(bookRoutes, { prefix: '/books' })
 
