@@ -9,6 +9,9 @@ import { authorCreateRoute } from './view/author/create-author.tsx'
 import { authorUpdateRoute } from './view/author/update-author.tsx'
 import { bookCreateRoute } from './view/book/create-book.tsx'
 import { bookUpdateRoute } from './view/book/update-book.tsx'
+import { loginRoute } from './view/auth/login.tsx'
+import { authRoute } from './view/auth/index.tsx'
+import { wasmRoute } from './view/wasm.tsx'
 
 interface RouterContext {
   queryClient: QueryClient
@@ -25,6 +28,8 @@ export const routeTree = layoutRoute.addChildren([
     authorUpdateRoute,
   ]),
   bookRoute.addChildren([bookListRoute, bookCreateRoute, bookUpdateRoute]),
+  authRoute.addChildren([loginRoute]),
+  wasmRoute,
 ])
 
 declare module '@tanstack/react-router' {

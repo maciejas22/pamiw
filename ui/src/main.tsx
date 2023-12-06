@@ -7,7 +7,6 @@ import { Notifications } from '@mantine/notifications'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { Router, RouterProvider } from '@tanstack/react-router'
 import { routeTree } from './route-tree.tsx'
-import ErrorBoundary from './catch-unauthorized.tsx'
 
 const queryClient = new QueryClient()
 const router = new Router({
@@ -23,12 +22,10 @@ if (!rootElement?.innerHTML) {
   root.render(
     <StrictMode>
       <MantineProvider defaultColorScheme='dark'>
-        <ErrorBoundary>
-          <QueryClientProvider client={queryClient}>
-            <Notifications />
-            <RouterProvider router={router} />
-          </QueryClientProvider>
-        </ErrorBoundary>
+        <QueryClientProvider client={queryClient}>
+          <Notifications />
+          <RouterProvider router={router} />
+        </QueryClientProvider>
       </MantineProvider>
     </StrictMode>,
   )

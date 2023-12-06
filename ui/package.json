@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
+    "build:wasm": "asc ./node_modules/as-bind/lib/assembly/as-bind.ts assembly/index.ts -b public/my-wasm.wasm --optimize",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
@@ -17,8 +18,11 @@
     "@tanstack/react-loaders": "^0.0.1-beta.53",
     "@tanstack/react-query": "^5.8.3",
     "@tanstack/react-router": "^0.0.1-beta.209",
+    "as-bind": "^0.8.2",
+    "asc": "^2.0.3",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "wat2wasm": "^3.0.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",
@@ -26,11 +30,13 @@
     "@typescript-eslint/eslint-plugin": "^6.0.0",
     "@typescript-eslint/parser": "^6.0.0",
     "@vitejs/plugin-react": "^4.0.3",
+    "assemblyscript": "^0.19.23",
     "eslint": "^8.45.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.3",
     "postcss-preset-mantine": "^1.11.0",
     "typescript": "^5.0.2",
-    "vite": "^4.4.5"
+    "vite": "^4.4.5",
+    "vite-plugin-pwa": "^0.17.3"
   }
 }

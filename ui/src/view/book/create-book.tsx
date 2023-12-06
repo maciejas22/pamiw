@@ -56,7 +56,7 @@ export const bookCreateRoute = new Route({
         message: 'Please wait...',
         loading: true,
       })
-      
+
       createBookMutation.mutate(values, {
         onSuccess: () => {
           notifications.update({

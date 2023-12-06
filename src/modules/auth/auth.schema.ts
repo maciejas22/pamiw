@@ -16,13 +16,15 @@ const userCore = {
     .min(2, 'Password must be at least 2 character long'),
 }
 
+const { password, ...userCoreWithoutSensitive } = userCore
+
 const registerUserSchema = z.object({
   ...userCore,
 })
 
 const registerUserResponseSchema = z.object({
   id: z.number(),
-  ...userCore,
+  ...userCoreWithoutSensitive,
 })
 
 const loginUserSchema = z.object({
@@ -31,7 +33,7 @@ const loginUserSchema = z.object({
 
 const loginUserResponseSchema = z.object({
   id: z.number(),
-  ...userCore,
+  ...userCoreWithoutSensitive,
 })
 
 export type RegisterUserInput = z.infer<typeof registerUserSchema>

@@ -6,10 +6,6 @@
   "printWidth": 80,
   "tabWidth": 2,
   "useTabs": false,
-  "importOrder": [
-    "^react",
-    "^@?\\w",
-    "^[./~]"
-  ],
+  "importOrder": ["^react", "^@?\\w", "^[./~]"],
   "importOrderSeparation": true
 }

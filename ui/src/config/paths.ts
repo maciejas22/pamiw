@@ -1,32 +1,20 @@
-const paths = {
-    authors: {
-        prefix: '/authors',
-        getById: '/$id',
-        findAll: '/',
-        create: '/',
-        update: '/',
-        delete: '/',
-    },
-    books: {
-        prefix: '/books',
-        getById: '/$id',
-        findAll: '/',
-        create: '/',
-        update: '/',
-        delete: '/',
-    }
+export const path = {
+  authors: {
+    getById: '/authors/$id',
+    findAll: '/authors/',
+    create: '/authors/',
+    update: '/authors/',
+    delete: '/authors/',
+  },
+  books: {
+    getById: '/books/$id',
+    findAll: '/books/',
+    create: '/books/',
+    update: '/books/',
+    delete: '/books/',
+  },
+  auth: {
+    login: '/auth/login',
+    register: '/auth/register',
+  },
 }
-
-type Module = keyof typeof paths;
-type IPath = {
-    [key in Module]: {
-        prefix: string;
-        findAll: string;
-        getById: string;
-        create: string;
-        update: string;
-        delete: string;
-    };
-}
-export const path: IPath = paths;
-
