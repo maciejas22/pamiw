@@ -73,36 +73,36 @@ const buildServer = (NODE_ENV: Env) => {
   server.register(authorRoutes, { prefix: '/authors' })
   server.register(bookRoutes, { prefix: '/books' })
 
-  server.addHook('onRequest', async (request, reply) => {
-    const protectedRoutes = ['/authors', '/books']
-    const accessToken = request.cookies['accessToken']
+  // server.addHook('onRequest', async (request, reply) => {
+  //   const protectedRoutes = ['/authors', '/books']
+  //   const accessToken = request.cookies['accessToken']
 
-    if (protectedRoutes.some((route) => request.url.includes(route))) {
-      if (!accessToken) {
-        console.log('accessToken', accessToken)
-        reply.code(401).send({ message: 'Unauthorized' })
-        return
-      }
+  //   if (protectedRoutes.some((route) => request.url.includes(route))) {
+  //     if (!accessToken) {
+  //       console.log('accessToken', accessToken)
+  //       reply.code(401).send({ message: 'Unauthorized' })
+  //       return
+  //     }
 
-      try {
-        const decodedToken = await request.jwtVerify()
+  //     try {
+  //       const decodedToken = await request.jwtVerify()
 
-        if (!decodedToken) {
-          console.log('decodedToken', decodedToken)
-          reply.code(401).send({ message: 'Unauthorized' })
-        }
+  //       if (!decodedToken) {
+  //         console.log('decodedToken', decodedToken)
+  //         reply.code(401).send({ message: 'Unauthorized' })
+  //       }
 
-        const { role } = decodedToken as JWTPayloadType
+  //       const { role } = decodedToken as JWTPayloadType
 
-        if (!(role === 'ADMIN') && request.method !== 'GET') {
-          reply.code(403).send({ message: 'Forbidden' })
-        }
-      } catch (err) {
-        reply.code(401).send({ message: 'Unauthorized' })
-      }
-      return
-    }
-  })
+  //       if (!(role === 'ADMIN') && request.method !== 'GET') {
+  //         reply.code(403).send({ message: 'Forbidden' })
+  //       }
+  //     } catch (err) {
+  //       reply.code(401).send({ message: 'Unauthorized' })
+  //     }
+  //     return
+  //   }
+  // })
 
   return server
 }

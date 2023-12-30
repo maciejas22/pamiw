@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "npx prisma migrate dev && npm run seed && ts-node ./src/app.ts",
-    "dev": "npx prisma migrate dev && nodemon ./src/app.ts",
+    "start": "npm run seed && ts-node ./src/app.ts",
+    "dev": "nodemon ./src/app.ts",
     "build": "npx prisma generate",
     "seed": "ts-node ./prisma/seed.ts"
   },
